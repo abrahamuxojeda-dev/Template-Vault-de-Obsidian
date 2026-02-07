@@ -1,0 +1,446 @@
+/* custom-theme.css
+ * Main theme customization for Obsidian
+ * Provides color scheme, typography, and layout improvements
+ */
+
+/* ============================================
+   COLOR VARIABLES
+   ============================================ */
+
+.theme-light {
+  /* Primary colors */
+  --accent-color: #6366f1;
+  --accent-color-hover: #4f46e5;
+  --accent-color-rgb: 99, 102, 241;
+  
+  /* Background colors */
+  --background-primary: #ffffff;
+  --background-secondary: #f9fafb;
+  --background-tertiary: #f3f4f6;
+  --background-modifier-border: #e5e7eb;
+  --background-modifier-hover: #f3f4f6;
+  
+  /* Text colors */
+  --text-normal: #1f2937;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+  --text-accent: #6366f1;
+  --text-accent-hover: #4f46e5;
+  
+  /* Interactive elements */
+  --interactive-normal: #e5e7eb;
+  --interactive-hover: #d1d5db;
+  --interactive-accent: #6366f1;
+  
+  /* Status colors */
+  --color-red: #ef4444;
+  --color-orange: #f59e0b;
+  --color-yellow: #eab308;
+  --color-green: #22c55e;
+  --color-blue: #3b82f6;
+  --color-purple: #a855f7;
+  --color-pink: #ec4899;
+}
+
+.theme-dark {
+  /* Primary colors */
+  --accent-color: #818cf8;
+  --accent-color-hover: #6366f1;
+  --accent-color-rgb: 129, 140, 248;
+  
+  /* Background colors */
+  --background-primary: #111827;
+  --background-secondary: #1f2937;
+  --background-tertiary: #374151;
+  --background-modifier-border: #4b5563;
+  --background-modifier-hover: #374151;
+  
+  /* Text colors */
+  --text-normal: #f9fafb;
+  --text-muted: #d1d5db;
+  --text-faint: #9ca3af;
+  --text-accent: #818cf8;
+  --text-accent-hover: #6366f1;
+  
+  /* Interactive elements */
+  --interactive-normal: #374151;
+  --interactive-hover: #4b5563;
+  --interactive-accent: #818cf8;
+  
+  /* Status colors */
+  --color-red: #f87171;
+  --color-orange: #fb923c;
+  --color-yellow: #facc15;
+  --color-green: #4ade80;
+  --color-blue: #60a5fa;
+  --color-purple: #c084fc;
+  --color-pink: #f472b6;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+body {
+  --font-text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-monospace: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --font-text-size: 16px;
+  --line-height-normal: 1.6;
+  --line-height-tight: 1.4;
+}
+
+/* Headers */
+.markdown-preview-view h1,
+.markdown-source-view.mod-cm6 .cm-header-1 {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: var(--text-normal);
+}
+
+.markdown-preview-view h2,
+.markdown-source-view.mod-cm6 .cm-header-2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  color: var(--text-normal);
+}
+
+.markdown-preview-view h3,
+.markdown-source-view.mod-cm6 .cm-header-3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: var(--text-normal);
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+.markdown-preview-view a,
+.cm-link,
+.cm-hmd-internal-link {
+  color: var(--text-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.markdown-preview-view a:hover,
+.cm-link:hover,
+.cm-hmd-internal-link:hover {
+  color: var(--text-accent-hover);
+  text-decoration: underline;
+}
+
+/* External links */
+.markdown-preview-view a.external-link::after {
+  content: " ↗";
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+
+code {
+  font-family: var(--font-monospace);
+  background-color: var(--background-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre code {
+  display: block;
+  padding: 1em;
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.5;
+  border: 1px solid var(--background-modifier-border);
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+
+.markdown-preview-view ul,
+.markdown-preview-view ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+
+.markdown-preview-view li {
+  margin: 0.25em 0;
+  line-height: 1.6;
+}
+
+/* Task lists */
+.markdown-preview-view .task-list-item {
+  list-style: none;
+  margin-left: -1.5em;
+}
+
+.markdown-preview-view .task-list-item-checkbox {
+  margin-right: 0.5em;
+  width: 1.1em;
+  height: 1.1em;
+  cursor: pointer;
+}
+
+.markdown-preview-view .task-list-item-checkbox:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* ============================================
+   BLOCKQUOTES
+   ============================================ */
+
+.markdown-preview-view blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1em;
+  margin: 1em 0;
+  color: var(--text-muted);
+  font-style: italic;
+  background-color: var(--background-secondary);
+  padding: 0.5em 1em;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ============================================
+   CALLOUTS / ADMONITIONS
+   ============================================ */
+
+.callout {
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+  border-left: 4px solid;
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="info"] {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: var(--color-blue);
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="success"] {
+  background-color: rgba(34, 197, 94, 0.1);
+  border-color: var(--color-green);
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="caution"] {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: var(--color-orange);
+}
+
+.callout[data-callout="danger"],
+.callout[data-callout="error"] {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--color-red);
+}
+
+.callout[data-callout="question"],
+.callout[data-callout="help"] {
+  background-color: rgba(168, 85, 247, 0.1);
+  border-color: var(--color-purple);
+}
+
+/* ============================================
+   HORIZONTAL RULES
+   ============================================ */
+
+.markdown-preview-view hr {
+  border: none;
+  border-top: 2px solid var(--background-modifier-border);
+  margin: 2em 0;
+  opacity: 0.5;
+}
+
+/* ============================================
+   TAGS
+   ============================================ */
+
+.tag {
+  background-color: var(--background-tertiary);
+  color: var(--text-accent);
+  border-radius: 12px;
+  padding: 0.15em 0.6em;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.2);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   FILE EXPLORER
+   ============================================ */
+
+.nav-folder-title {
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-folder-title:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.nav-file-title {
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-file-title:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.nav-file-title.is-active {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 500;
+}
+
+/* ============================================
+   WORKSPACE
+   ============================================ */
+
+.workspace-leaf {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.view-header {
+  border-bottom: 1px solid var(--background-modifier-border);
+  background-color: var(--background-secondary);
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-modifier-border);
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--interactive-hover);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button {
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mod-cta {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 500;
+}
+
+.mod-cta:hover {
+  background-color: var(--accent-color-hover);
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+
+.modal {
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.markdown-preview-view > * {
+  animation: fadeIn 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVENESS
+   ============================================ */
+
+@media (max-width: 768px) {
+  body {
+    --font-text-size: 14px;
+  }
+  
+  .markdown-preview-view h1 {
+    font-size: 1.75em;
+  }
+  
+  .markdown-preview-view h2 {
+    font-size: 1.4em;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .workspace-ribbon,
+  .workspace-split.mod-left-split,
+  .workspace-split.mod-right-split,
+  .view-header,
+  .status-bar {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}
